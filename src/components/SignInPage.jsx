@@ -156,7 +156,7 @@ const SignInPage = () => {
           <Logo>
             <LogoIcon>⚡</LogoIcon>
             <Typography variant="h5" fontWeight="bold" color="#1f2937">
-              Dhananjaya
+              Dhananjaya Lakshan
             </Typography>
           </Logo>
 
