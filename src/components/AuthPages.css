@@ -1,0 +1,116 @@
+/* ===== Layout Containers ===== */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #f3f4f6;
+}
+
+.card {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 960px) {
+    .card {
+        flex-direction: column;
+    }
+}
+
+/* ===== Form & Banner Sections ===== */
+.form-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .form-section {
+        padding: 24px;
+    }
+}
+
+.banner-section {
+    flex: 1;
+    background: linear-gradient(135deg, #1e3a8a 0%, #60a5fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 24px;
+    text-align: center;
+}
+
+@media (max-width: 960px) {
+    .banner-section {
+        display: none;
+    }
+}
+
+/* ===== Logo Area ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ===== Input Field Spacing ===== */
+.MuiTextField-root {
+    margin-bottom: 16px !important;
+}
+
+/* ===== Auth Buttons (Submit, Social) ===== */
+.auth-button {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 12px 24px;
+    color: #fff;
+}
+
+.google-button,
+.facebook-button {
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: #1f2937;
+    border: 1px solid #d1d5db;
+    text-transform: none;
+    background-color: #fff;
+}
+
+.google-button:hover,
+.facebook-button:hover {
+    background-color: #f3f4f6;
+}
+
+/* ===== Footer Link Text ===== */
+.auth-footer {
+    margin-top: 16px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
