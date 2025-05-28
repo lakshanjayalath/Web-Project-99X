@@ -25,8 +25,8 @@ const MainContainer = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '100vh',
-    height: '100vh', 
-    width: '100vw',  
+    height: '100vh',
+    width: '100vw',
     overflow: 'hidden',
     backgroundColor: '#f3f4f6',
 }));
