@@ -1,9 +1,8 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignInPage from './components/SignInPage';
-import SignUpPage from './components/SignUpPage';
-import Dashboard from './components/Dashboard';
+import SignInPage from './Pages/SignInPage';
+import SignUpPage from './Pages/SignUpPage';
+import Dashboard from './Pages/Dashboard';
 
 
 function App() {
