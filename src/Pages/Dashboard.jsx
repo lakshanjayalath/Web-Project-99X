@@ -5,7 +5,7 @@ import '../css/Dashboard.css'
 const Dashboard = () => {
     return (
         <div>
-            <Header role="Admin" />
+            <Header role="User" />
         </div>
     )
 }

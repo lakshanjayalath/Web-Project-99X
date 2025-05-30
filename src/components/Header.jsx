@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,9 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-const Header = ({ role = 'User' }) => {
+const Header = ({ role = 'Admin', isSignedIn = false }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,7 +43,18 @@ const Header = ({ role = 'User' }) => {
   };
 
   // User settings menu
-  const userSettings = ['My Profile', 'Logout'];
+  const userSettings = isSignedIn
+    ? ['My Profile', 'Logout']
+    : ['Sign In', 'Sign Up'];
+
+  const handleUserMenuClick = (setting) => {
+    handleCloseUserMenu();
+    if (setting === 'Sign In') {
+      navigate('/signin');
+    } else if (setting === 'Sign Up') {
+      navigate('/signup');
+    }
+  };
 
   return (
     <AppBar style={{ backgroundColor: '#60a5fa' }}>
@@ -132,7 +145,7 @@ const Header = ({ role = 'User' }) => {
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               {userSettings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => handleUserMenuClick(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

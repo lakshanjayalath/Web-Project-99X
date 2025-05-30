@@ -1,138 +1,86 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
-    Box,
-    TextField,
-    Button,
-    Typography,
-    FormControlLabel,
-    Checkbox,
-    Divider,
-    IconButton,
-    InputAdornment,
-    Link,
+  Box, TextField, Button, Typography, Checkbox, FormControlLabel,
+  Divider, IconButton, InputAdornment, Link
 } from '@mui/material';
-import {
-    Visibility,
-    VisibilityOff,
-    Google as GoogleIcon,
-    Facebook as FacebookIcon,
-} from '@mui/icons-material';
+import { Visibility, VisibilityOff, Google, Facebook } from '@mui/icons-material';
 import '../css/AuthPages.css';
 
 const SignInPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [keepLoggedIn, setKeepLoggedIn] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log({ email, password, rememberMe });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ email, password, keepLoggedIn });
+  };
 
-    return (
-        <div className="main-container">
-            <div className="card">
-                <div className="form-section">
+  return (
+    <Box className="main-container">
+      <Box className="card">
+        <Box className="form-section">
 
-                    <Typography variant="h4" fontWeight="bold" color="textPrimary">
-                        Sign in
-                    </Typography>
-                    <Typography variant="body1" color="textSecondary" mb={2}>
-                        Welcome back! Please log in to your account.
-                    </Typography>
+          <Typography variant="h4" gutterBottom fontWeight="bold" color='primary'>Sign in</Typography>
+          <Typography variant="body1" color="textSecondary" mb={3}>
+            Please login to continue to your account.
+          </Typography>
 
-                    <div component="form" onSubmit={handleSubmit}>
-                        <TextField
-                            label="Email"
-                            type="email"
-                            fullWidth
-                            required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <TextField
-                            label="Password"
-                            type={showPassword ? 'text' : 'password'}
-                            fullWidth
-                            required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton onClick={() => setShowPassword(!showPassword)}>
-                                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={rememberMe}
-                                    onChange={(e) => setRememberMe(e.target.checked)}
-                                    sx={{ color: '#6b7280' }}
-                                />
-                            }
-                            label={
-                                <Typography variant="body2" color="textPrimary">
-                                    Remember me
-                                </Typography>
-                            }
-                            sx={{ mb: 2 }}
-                        />
+          <Box component="form" onSubmit={handleSubmit}>
+            <TextField className="text-field" label="Email" type="email" fullWidth required value={email} onChange={(e) => setEmail(e.target.value)} sx={{ mb: 2 }} />
+            <TextField
+              className="text-field"
+              label="Password"
+              type={showPassword ? 'text' : 'password'}
+              fullWidth
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{ mb: 2 }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox checked={keepLoggedIn} onChange={(e) => setKeepLoggedIn(e.target.checked)} sx={{ color: '#6b7280' }} />
+              }
+              label="Keep me logged in"
+              sx={{ mb: 2, color: '#6b7280' }}
+            />
 
-                        <Button
-                            fullWidth
-                            type="submit"
-                            variant="contained"
-                            className="auth-button"
-                            sx={{ backgroundColor: '#3b82f6' }}
-                        >
-                            Sign In
-                        </Button>
+            <Button className="submit-button" fullWidth type="submit" variant="contained" sx={{ mb: 2 }}>Sign In</Button>
 
-                        <Divider sx={{ my: 3 }}>or</Divider>
+            <Divider sx={{ my: 3 }}>or</Divider>
 
-                        <Button
-                            fullWidth
-                            variant="outlined"
-                            startIcon={<GoogleIcon />}
-                            className="google-button"
-                        >
-                            Sign in with Google
-                        </Button>
+            <Button className="alt-button" fullWidth variant="outlined" startIcon={<Google />} sx={{ mb: 2 }}>Sign in with Google</Button>
+            <Button className="alt-button" fullWidth variant="outlined" startIcon={<Facebook />} sx={{ mb: 2 }}>Sign in with Facebook</Button>
 
-                        <Button
-                            fullWidth
-                            variant="outlined"
-                            startIcon={<FacebookIcon />}
-                            className="facebook-button"
-                            sx={{ mt: 2 }}
-                        >
-                            Sign in with Facebook
-                        </Button>
+            <Typography variant="body2" align="center" color='textSecondary'>
+              Need an account?{' '}
+              <Link component={RouterLink} to="/signup" underline="hover" color="primary">
+                Create one
+              </Link>
+            </Typography>
+          </Box>
+        </Box>
 
-                        <Typography className="auth-footer">
-                            Don’t have an account?{' '}
-                            <Link component={RouterLink} to="/signup" underline="hover" color="primary">
-                                Sign up
-                            </Link>
-                        </Typography>
-                    </div>
-                </div>
-
-                <div className="banner-section">
-                    <Typography variant="h4" fontWeight="bold">
-                        Welcome to Dhananjaya Platform 🚀
-                    </Typography>
-                </div>
-            </div>
-        </div>
-    );
+        <Box className="banner-section">
+          <Typography variant="h4" fontWeight="bold" textAlign="center">
+            Welcome back to Dhananjaya ✨
+          </Typography>
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
 export default SignInPage;

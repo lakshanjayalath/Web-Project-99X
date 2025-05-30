@@ -3,18 +3,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignInPage from './Pages/SignInPage';
 import SignUpPage from './Pages/SignUpPage';
 import Dashboard from './Pages/Dashboard';
+import Home from './Pages/Home';
 
 
 function App() {
   return (
     <>
-      {/* <Router>
+      <Router>
         <Routes>
-          <Route path="/" element={<SignInPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </Router> */}
-      <Dashboard />
+      </Router>
     </>
   );
 }
