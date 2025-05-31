@@ -10,12 +10,12 @@ const Home = () => {
       <HomeMenu />
 
       <div className='home-container'>
-        <div className='home-content'>
-          <Container maxWidth="md" sx={{ textAlign: 'center', mt: 20, mb: 10 }}>
+        <div className='home-content' style={{height:'100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <Container maxWidth="md" sx={{ textAlign: 'center', mb: 10 }}>
             <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" color='primary'>
               Welcome to Dhananjaya's App
             </Typography>
-            <Typography variant="h6" color="text.secondary" paragraph>
+            <Typography variant="h6" color="primary" paragraph>
               This is your homepage. Use the navigation bar to sign in or create a new account.
             </Typography>
             <Button
@@ -28,7 +28,7 @@ const Home = () => {
               Get Started
             </Button>
             <Box sx={{ textAlign: 'center', mt: 4 }}>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="primary">
                 © {new Date().getFullYear()} Dhananjaya. All rights reserved.
               </Typography>
             </Box>

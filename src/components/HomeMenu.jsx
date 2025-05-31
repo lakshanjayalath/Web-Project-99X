@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const HomeMenu = () => {
   return (
-    <AppBar color="primary" position='fixed'>
+    <AppBar color="primary" position="static">
       <Toolbar>
         <Typography variant="h6" component={RouterLink} to="/" sx={{ flexGrow: 1, color: 'inherit', textDecoration: 'none' }}>
           Dhananjaya

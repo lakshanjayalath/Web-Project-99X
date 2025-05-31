@@ -57,7 +57,7 @@ const Header = ({ role = 'Admin', isSignedIn = false }) => {
   };
 
   return (
-    <AppBar style={{ backgroundColor: '#60a5fa' }}>
+    <AppBar style={{ backgroundColor: '#60a5fa' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Desktop Logo */}
