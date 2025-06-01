@@ -57,7 +57,7 @@ const Header = ({ role = 'Admin', isSignedIn = false }) => {
   };
 
   return (
-    <AppBar style={{ backgroundColor: '#60a5fa' }} position="static">
+    <AppBar style={{ background: 'linear-gradient(to right, #F72585, #3A0CA3)', }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Desktop Logo */}
@@ -65,7 +65,7 @@ const Header = ({ role = 'Admin', isSignedIn = false }) => {
             variant="h6"
             noWrap
             component="a"
-            href="#"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -75,7 +75,7 @@ const Header = ({ role = 'Admin', isSignedIn = false }) => {
               textDecoration: 'none',
             }}
           >
-            DASHBOARD
+            Dhananjaya
           </Typography>
 
           {/* Mobile Menu Icon */}

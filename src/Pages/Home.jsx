@@ -12,11 +12,12 @@ const Home = () => {
       <div className='home-container' style={{ display: 'block', flexDirection: 'column' }}>
         <div className='home-content' style={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
           <Container maxWidth="md" sx={{ textAlign: 'center', mb: 10, mt: 10 }}>
-            <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" color='primary'>
+            <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" color='#000000'>
               Welcome to Dhananjaya's App
             </Typography>
-            <Typography variant="h6" color="primary" paragraph>
-              This is your homepage. Use the navigation bar to sign in or create a new account.
+            <Typography variant="h6" color="#000000" paragraph>
+              This is a simple web application built with React, MUI, and React Router.
+              Explore the features and functionalities by signing up or logging in
             </Typography>
             <Button
               className='get-started-button'
