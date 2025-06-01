@@ -18,9 +18,9 @@ const HomeMenu = () => {
         <Button color="inherit" component={RouterLink} to="/signup">
           Sign Up
         </Button>
-        <Button color="inherit" component={RouterLink} to="/dashboard">
+        {/* <Button color="inherit" component={RouterLink} to="/dashboard">
           Dashboard
-        </Button>
+        </Button> */}
       </Toolbar>
     </AppBar>
   );

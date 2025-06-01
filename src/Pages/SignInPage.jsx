@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Box, TextField, Button, Typography, Checkbox, FormControlLabel,
   Divider, IconButton, InputAdornment, Link
@@ -12,10 +12,24 @@ const SignInPage = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const validate = () => {
+    const newErrors = {};
+    if (!email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email is invalid';
+    if (!password) newErrors.password = 'Password is required';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password, keepLoggedIn });
+    if (validate()) {
+      // Simulate API call or add your sign-in logic here
+      navigate('/dashboard');
+    }
   };
 
   return (
@@ -29,7 +43,18 @@ const SignInPage = () => {
           </Typography>
 
           <Box component="form" onSubmit={handleSubmit}>
-            <TextField className="text-field" label="Email" type="email" fullWidth required value={email} onChange={(e) => setEmail(e.target.value)} sx={{ mb: 2 }} />
+            <TextField
+              className="text-field"
+              label="Email"
+              type="email"
+              fullWidth
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ mb: 2 }}
+              error={!!errors.email}
+              helperText={errors.email}
+            />
             <TextField
               className="text-field"
               label="Password"
@@ -39,6 +64,8 @@ const SignInPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               sx={{ mb: 2 }}
+              error={!!errors.password}
+              helperText={errors.password}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

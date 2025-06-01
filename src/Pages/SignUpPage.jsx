@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Box, TextField, Button, Typography, Checkbox, FormControlLabel,
   Divider, IconButton, InputAdornment, Link
@@ -14,14 +14,28 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const validate = () => {
+    const newErrors = {};
+    if (!fullName.trim()) newErrors.fullName = 'Full Name is required';
+    if (!email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email is invalid';
+    if (!password) newErrors.password = 'Password is required';
+    else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    if (!confirmPassword) newErrors.confirmPassword = 'Confirm your password';
+    else if (password !== confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match!');
-      return;
+    if (validate()) {
+      // Simulate API call or add your sign-up logic here
+      navigate('/dashboard');
     }
-    console.log({ fullName, email, password, keepLoggedIn });
   };
 
   return (
@@ -35,8 +49,29 @@ const SignUpPage = () => {
           </Typography>
 
           <Box component="form" onSubmit={handleSubmit}>
-            <TextField className="text-field" label="Full Name" fullWidth required value={fullName} onChange={(e) => setFullName(e.target.value)} sx={{ mb: 2 }} />
-            <TextField className="text-field" label="Email" type="email" fullWidth required value={email} onChange={(e) => setEmail(e.target.value)} sx={{ mb: 2 }} />
+            <TextField
+              className="text-field"
+              label="Full Name"
+              fullWidth
+              required
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              sx={{ mb: 2 }}
+              error={!!errors.fullName}
+              helperText={errors.fullName}
+            />
+            <TextField
+              className="text-field"
+              label="Email"
+              type="email"
+              fullWidth
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ mb: 2 }}
+              error={!!errors.email}
+              helperText={errors.email}
+            />
             <TextField
               className="text-field"
               label="Password"
@@ -46,6 +81,8 @@ const SignUpPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               sx={{ mb: 2 }}
+              error={!!errors.password}
+              helperText={errors.password}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -65,6 +102,8 @@ const SignUpPage = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               sx={{ mb: 2 }}
+              error={!!errors.confirmPassword}
+              helperText={errors.confirmPassword}
             />
             <FormControlLabel
               control={

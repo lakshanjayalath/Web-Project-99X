@@ -4,9 +4,17 @@ import '../css/Dashboard.css'
 
 const Dashboard = () => {
     return (
-        <div>
+        <>
             <Header role="User" />
-        </div>
+
+            <div className='dashboard-container'>
+                <div className='dashboard-content' style={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
+                    <h1 style={{textAlign:'center'}}>Welcome to Dashboard</h1>
+                </div>
+            </div>
+            
+
+        </>
     )
 }
 
